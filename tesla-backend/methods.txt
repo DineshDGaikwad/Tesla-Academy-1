@@ -1,0 +1,44 @@
+** To run 8000 port of backend
+uvicorn main:app --reload
+
+*** To start mongodb terminal
+
+mongo "mongodb+srv://Dinesh2863:Dinu@cluster0.ctjos.mongodb.net/tesla_academy?retryWrites=true&w=majority&appName=Cluster0"
+
+
+++++  To add courses
+
+use tesla_academy;
+
+db.courses.updateOne(
+  { "_id": ObjectId("67209e6f8db45acaf6754dbb") },
+  {
+    $set: {
+      "courses.10th Standard": [  
+        {
+          "title": "Mathematics",
+          "description": "Comprehensive Mathematics Course.",
+          "img": "https://img.freepik.com/free-vector/math-chalkboard-background_23-2148152441.jpg?size=626&ext=jpg"
+        },
+        {
+          "title": "Science",
+          "description": "Explore Physics, Chemistry, and Biology.",
+          "img": "https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?cs=srgb&dl=pexels-pixabay-256262.jpg&fm=jpg"
+        }
+      ]
+    }
+  }
+);
+
+
+
+****  to delete course 
+
+db.courses.updateOne(
+  { "_id": ObjectId("67209e6f8db45acaf6754dbb") },
+  {
+    $unset: {
+      "courses.10th Standard": ""  
+    }
+  }
+);
